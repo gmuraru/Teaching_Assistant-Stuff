@@ -6,23 +6,16 @@ OUTPUT="processed_output"
 rm -rf $OUTPUT
 mkdir $OUTPUT
 
-for stud in $(ls $HOMEWORK_DIR)
-do
+for stud in $(ls $HOMEWORK_DIR); do
 
-	DIR_STUD="output/$stud/current/git/archive/"
-	STUD_C_FILES=$(find $DIR_STUD -type f -name "*.c")
-	STUD_H_FILES=$(find $DIR_STUD -type f -name "*.h")
+	DIR_STUD="$HOMEWORK_DIR/$stud/current/git/archive/"
+	STUD_SRC_FILES=$(find $DIR_STUD -type f -name "*.hs")
 
-	STUD_PROCESSED_FILE="$OUTPUT/$stud.c"
+	STUD_PROCESSED_FILE="$OUTPUT/$stud.hs"
 
-	for src_file in $STUD_C_FILES
-	do
+	for src_file in $STUD_C_FILES; do
 		cat $src_file >> $STUD_PROCESSED_FILE
 	done
 
-	for hdr_file in $STUD_H_FILES
-	do
-		cat $hdr_file >> $STUD_PROCESSED_FILE
-	done
     echo "Proccesed $stud"
 done
