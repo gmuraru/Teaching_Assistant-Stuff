@@ -14,8 +14,6 @@
 
 HWDIR=$1
 DELIMITER="#########################################"
-#SIGNATURE="--Răzvan Crainea"
-
 
 if [ -z "$HWDIR" ]; then
 	echo "Usage: $0 <howmework directory> [<grade file>]"
@@ -27,7 +25,7 @@ if [ -n "$2" ]; then
 else
 	GRADEFILE=$(echo "${HWDIR}" | sed 's#/*$##').grade.vmr
 fi
-	
+
 if ! [ -e "$HWDIR" -a -d "$HWDIR" ]; then
 	echo "Invalid homework directory '$HWDIR'"
 	exit
@@ -85,7 +83,6 @@ while read line; do
 				exit
 			fi
 			if [ "$line" = "$DELIMITER" ]; then
-				[ -n "$SIGNATURE" ] && echo "\n$SIGNATURE" >> $file
 				state=1
 				file=
 				student=
@@ -100,11 +97,6 @@ while read line; do
 	esac
 	line_no=$(($line_no+1))
 done < $GRADEFILE
-
-# if there was someone else, add the signature
-if [ "$state" = "3" -a -n "$file" ]; then
-	[ -n "$SIGNATURE" ] && echo "\n$SIGNATURE" >> $file
-fi
 
 if [ "$state" = "2" ]; then
 	echo "Bogus state: $state Student: $student File: $file"

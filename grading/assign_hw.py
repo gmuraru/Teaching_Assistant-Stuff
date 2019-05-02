@@ -23,11 +23,10 @@ submissions_dir = expanduser("~/vmchecker-storer/repo/")
 
 # list of TAs -- NEED TO CHANGE
 ta_list = ["TC", "GM"]
-ta_list_size = len(ta_list)
 
 # set of submissions to be skipped (usernames of TAs) -- NEED TO CHANGE
 submissions_to_skip = set(["george.muraru", "ioan_tudor.cebere"])
-
+ta_list_size = len(ta_list)
 
 # assign submissions to TAs
 def assign_submissions():
@@ -79,19 +78,15 @@ def build_ta_grading_file(ta, student_list, final_score_string, total_score, bon
 		except Exception as e:
 			error_score = "# TODO: verifica submisia"
 
-		#if error_score or penalty != 0:
-		#	continue
 		print(ta + ":" + student)
+                f.write("\n".join([delim, student, delim]))
 
-		f.write(delim + "\n")
-		f.write(student + "\n")
-		f.write(delim + "\n")
 		if error_score:
 			f.write(error_score)
+
 		elif penalty > 0:
 			f.write("-" + str(penalty) + \
 					": teste picate\n")
-
 		if bonus:
 			f.write("+" + str(bonus) + \
 					": bonus\n")
