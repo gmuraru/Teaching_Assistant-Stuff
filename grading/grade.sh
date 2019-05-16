@@ -48,6 +48,7 @@ student=
 file=
 line_no=0
 
+IFS=$'\n'
 while read line; do
 	case $state in
 		0)
