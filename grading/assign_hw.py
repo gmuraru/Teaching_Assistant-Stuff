@@ -79,7 +79,7 @@ def build_ta_grading_file(ta, student_list, final_score_string, total_score, bon
 			error_score = "# TODO: verifica submisia"
 
 		print(ta + ":" + student)
-                f.write("\n".join([delim, student, delim]))
+                f.write("\n".join([delim, student, delim]) + "\n")
 
 		if error_score:
 			f.write(error_score)
