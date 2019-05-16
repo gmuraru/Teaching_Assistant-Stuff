@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Fills in vmchecker the grades for each student
 #
