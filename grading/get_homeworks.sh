@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This script needs to be run after ssh-ing to vmchecker
+
 if [ $# -ne 1 ]; then
     echo -e "Need to be run on the elf machine\n"\
             "Usage: $0 homework_name\n"\
